@@ -1,1 +1,9 @@
-console.log('evaluator');
+define(function evaluator() {
+  return {
+    evaluate: evaluate
+  };
+
+  function evaluate(parsed) {
+    return 0;
+  }
+});

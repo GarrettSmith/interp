@@ -1,3 +1,2 @@
-#! /bin/sh
-
-node js/main.js "$@"
+#!/usr/bin/sh
+node js/cli.js "$@"

@@ -1,11 +1,25 @@
-var requirejs = require('requirejs');
-
-requirejs.config({
-  nodeRequire: require
-});
-
-requirejs(['tokenizer', 'parser', 'evaluator'], main);
+define(['tokenizer', 'parser', 'evaluator'], main);
 
 function main(tokenizer, parser, evaluator) {
-  console.log('main');
+
+  return {
+    interpret: interpret,
+    parse: parse
+  };
+
+  function interpret(input) {
+    var parsed = _parse(input);
+    var result = evaluator.evaluate(parsed);
+    return result;
+  }
+
+  function parse(input) {
+    return 0;
+  }
+
+  function _parse(input) {
+    var tokens = tokenizer.tokenize(input);
+    var parsed = parser.parse(tokens);
+    return parsed;
+  }
 }

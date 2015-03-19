@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/GarrettSmith/interp",
   "dependencies": {
+    "commander": "^2.7.1",
     "requirejs": "^2.1.16"
   }
 }
