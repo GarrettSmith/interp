@@ -1,0 +1,22 @@
+{
+  "name": "interp",
+  "version": "0.0.1",
+  "description": "A simple interpreter",
+  "main": "interp",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GarrettSmith/interp.git"
+  },
+  "author": "Garrett Smith (garrettwhsmith@gmail.com)",
+  "license": "GPL V3",
+  "bugs": {
+    "url": "https://github.com/GarrettSmith/interp/issues"
+  },
+  "homepage": "https://github.com/GarrettSmith/interp",
+  "dependencies": {
+    "requirejs": "^2.1.16"
+  }
+}
