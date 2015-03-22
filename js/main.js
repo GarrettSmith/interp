@@ -1,6 +1,6 @@
-define(['tokenizer', 'parser', 'evaluator'], main);
+define(['lexer', 'parser', 'evaluator'], main);
 
-function main(tokenizer, parser, evaluator) {
+function main(lexer, parser, evaluator) {
 
   return {
     interpret: interpret,
@@ -14,11 +14,13 @@ function main(tokenizer, parser, evaluator) {
   }
 
   function parse(input) {
+    var parsed = _parse(input);
     return 0;
   }
 
   function _parse(input) {
-    var tokens = tokenizer.tokenize(input);
+    var tokens = lexer.tokenize(input);
+    console.log(tokens);
     var parsed = parser.parse(tokens);
     return parsed;
   }

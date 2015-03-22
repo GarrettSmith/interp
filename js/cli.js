@@ -22,25 +22,20 @@ if (!args.length) {
 program.parse(process.argv);
 
 requirejs(['main'], function(main) {
-  var input;
-  try {
-    var file = args[0];
-    input = readInputFile(file);
-  } catch(err) {
+  var file = args[0];
+  var input = '';
+  require('readline').createInterface({
+    input: fs.createReadStream(file),
+    terminal: false
+  }).on('error', function(err) {
     console.error('Failed to read \'%s\'', program.file);
+    throw err;
     process.exit(1);
-  }
-  var command = program['parse-only'] ? main.parse : main.interpret;
-  var result = command(input);
-  process.exit(result);
-});
-
-// TODO parse chunks of a file at a time
-function readInputFile(file) {
-  var str = '';
-  fs.readFile(file, 'utf8', function(err, data) {
-    if (err) throw err;
-    str += data;
+  }).on('line', function(line) {
+    input += line + '\n';
+  }).on('close', function() {
+    var command = program['parse-only'] ? main.parse : main.interpret;
+    var result = command(input);
+    process.exit(result);
   });
-  return str;
-}
+});
